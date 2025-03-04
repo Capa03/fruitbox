@@ -1,0 +1,10 @@
+header, footer {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+main {
+  flex-grow: 1;
+  overflow-y: auto;
+  background-color: #f5f5f5;
+}

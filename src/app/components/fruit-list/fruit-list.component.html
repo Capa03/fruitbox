@@ -1,17 +1,27 @@
-<mat-grid-list cols="3" rowHeight="2:2">
+<mat-grid-list cols="3" rowHeight="2:1" >
   @for (fruit of fruits(); track fruit.id) {
     <mat-grid-tile>
-      <div>
-        <h2>{{fruit.name}}</h2>
-        <p>genus: {{fruit.genus}}</p>
-      </div>
+      <mat-card class="fruit-card">
+        <mat-card-header>
+          <mat-card-title>{{ fruit.name }}</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+          <h1>{{fruit.image}}</h1>
+          <p>Genus: {{ fruit.genus }}</p>
+        </mat-card-content>
+        <button mat-raised-button (click)="addToCart(fruit)">Buy</button>
+      </mat-card>
     </mat-grid-tile>
   }
+
   @empty {
-    <mat-grid-tile>
-      <div>
-        <h2>No fruits found</h2>
-      </div>
+    <mat-grid-tile >
+      <mat-card class="fruit-card">
+        <mat-card-content>
+          <h2>No fruits found</h2>
+        </mat-card-content>
+      </mat-card>
     </mat-grid-tile>
   }
 </mat-grid-list>

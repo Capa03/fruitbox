@@ -1,0 +1,19 @@
+mat-grid-list {
+  width: 100%;
+  margin: 20px auto;
+}
+
+.fruit-card {
+  display: flex;
+  flex-direction: column;
+  background-color: #fafafa;
+  border-radius: 8px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  align-items: center;
+  padding: 1.5em;
+  text-align: center;
+}
+
+.fruit-card h2 {
+  color: #555;
+}

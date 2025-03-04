@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ContentComponent } from './components/content/content.component';
+import { FruitListComponent } from './components/fruit-list/fruit-list.component';
+import { CartComponent } from './components/cart/cart.component';
+
 
 const routes: Routes = [
-  {path: 'fruits', component: ContentComponent},
+  {path: 'cart', component: CartComponent},
+  {path: 'fruits', component: FruitListComponent},
   {path: '', redirectTo: '/fruits', pathMatch: 'full'},
 ];
 

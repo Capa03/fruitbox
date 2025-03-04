@@ -6,11 +6,11 @@ const port = 3000;
 app.use(cors());
 // Sample fruit data
 const fruits = [
-  { "name": "Persimmon", "id": 52, "family": "Ebenaceae", "order": "Rosales", "genus": "Diospyros", "nutritions": { "calories": 81, "fat": 0.0, "sugar": 18.0, "carbohydrates": 18.0, "protein": 0.0 }, "image": "https://www.svgrepo.com/show/493261/persimmon.svg" },
-  { "name": "Strawberry", "id": 3, "family": "Rosaceae", "order": "Rosales", "genus": "Fragaria", "nutritions": { "calories": 29, "fat": 0.4, "sugar": 5.4, "carbohydrates": 5.5, "protein": 0.8 }, "image": "https://www.svgrepo.com/show/280781/strawberry.svg" },
-  { "name": "Banana", "id": 1, "family": "Musaceae", "order": "Zingiberales", "genus": "Musa", "nutritions": { "calories": 96, "fat": 0.2, "sugar": 17.2, "carbohydrates": 22.0, "protein": 1.0 }, "image": "https://www.svgrepo.com/show/25023/banana.svg" },
-  { "name": "Tomato", "id": 5, "family": "Solanaceae", "order": "Solanales", "genus": "Solanum", "nutritions": { "calories": 74, "fat": 0.2, "sugar": 2.6, "carbohydrates": 3.9, "protein": 0.9 }, "image": "https://www.svgrepo.com/show/7878/tomato.svg" },
-  { "name": "Pear", "id": 4, "family": "Rosaceae", "order": "Rosales", "genus": "Pyrus", "nutritions": { "calories": 57, "fat": 0.1, "sugar": 10.0, "carbohydrates": 15.0, "protein": 0.4 }, "image": "https://www.svgrepo.com/show/128419/pear.svg" }
+  { "name": "Persimmon", "id": 52, "family": "Ebenaceae", "order": "Rosales", "genus": "Diospyros", "nutritions": { "calories": 81, "fat": 0.0, "sugar": 18.0, "carbohydrates": 18.0, "protein": 0.0 }, "image": "🥭" },
+  { "name": "Strawberry", "id": 3, "family": "Rosaceae", "order": "Rosales", "genus": "Fragaria", "nutritions": { "calories": 29, "fat": 0.4, "sugar": 5.4, "carbohydrates": 5.5, "protein": 0.8 }, "image": "🍓" },
+  { "name": "Banana", "id": 1, "family": "Musaceae", "order": "Zingiberales", "genus": "Musa", "nutritions": { "calories": 96, "fat": 0.2, "sugar": 17.2, "carbohydrates": 22.0, "protein": 1.0 }, "image": "🍌" },
+  { "name": "Tomato", "id": 5, "family": "Solanaceae", "order": "Solanales", "genus": "Solanum", "nutritions": { "calories": 74, "fat": 0.2, "sugar": 2.6, "carbohydrates": 3.9, "protein": 0.9 }, "image": "🍅" },
+  { "name": "Pear", "id": 4, "family": "Rosaceae", "order": "Rosales", "genus": "Pyrus", "nutritions": { "calories": 57, "fat": 0.1, "sugar": 10.0, "carbohydrates": 15.0, "protein": 0.4 }, "image": "🍐" }
 ];
 
 // Define route to get all fruits

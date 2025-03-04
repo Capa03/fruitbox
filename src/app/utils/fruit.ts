@@ -6,7 +6,8 @@ export interface fruit
   "family": string,
   "order": string,
   "nutritions": nutrition[],
-  "image": string
+  "image": string,
+  "price": number,
 }
 
 interface nutrition
@@ -16,4 +17,13 @@ interface nutrition
   "fat": number,
   "calories": number,
   "sugar": number
+}
+
+
+export interface cartItem
+{
+  id: number,
+  name: string,
+  price: number,
+  quantity: number
 }

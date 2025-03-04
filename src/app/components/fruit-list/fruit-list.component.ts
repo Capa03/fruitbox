@@ -1,6 +1,7 @@
+import { fruit } from './../../utils/fruit';
 import { Component, OnInit, Signal, signal } from '@angular/core';
 import { FruitService } from '../../service/fruit.service';
-import { fruit } from '../../utils/fruit';
+
 
 @Component({
   selector: 'app-fruit-list',
@@ -16,5 +17,10 @@ export class FruitListComponent implements OnInit {
 
   ngOnInit() {
     this.fruits = this.fruitService.fruits;
+  }
+
+  addToCart(fruit: fruit)
+  {
+    this.fruitService.addFruitToCart(fruit);
   }
 }

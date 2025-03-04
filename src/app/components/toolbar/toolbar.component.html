@@ -1,7 +1,10 @@
-<mat-toolbar>
+<mat-toolbar color="primary">
   <mat-toolbar-row>
-    <span class="title">Fruit Box 🍉</span>
+    <span class="title" routerLink="fruits">Fruit Box 🍉</span>
     <span class="spacer"></span>
-    <span class="cart">📦</span>
+    <button mat-icon-button (click)="onCartClick()">
+      <mat-icon matBadge="{{cartCount()}}" matBadgeColor="accent">shopping_cart</mat-icon>
+    </button>
   </mat-toolbar-row>
 </mat-toolbar>
+
