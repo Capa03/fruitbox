@@ -14,15 +14,17 @@ export class FruitService {
   private fruitsResult: Signal<Result<fruit[]> | undefined> = signal(undefined);
   private cart = signal<cartItem[]>([]);
 
+  readonly fruits = computed(() => this.fruitsResult()?.data);
+  readonly fruitsError = computed(() => this.fruitsResult()?.error);
+  readonly cartCount = computed(() => this.cart().length);
+  readonly cartList = computed(() => this.cart());
+
   constructor(private http: HttpClient, private url: ServerService) {
     this.fruitsResult = toSignal(this.getFruits());
     effect(() => console.log('Cart:', this.cart()));
   }
 
-  readonly fruits = computed(() => this.fruitsResult()?.data);
-  readonly fruitsError = computed(() => this.fruitsResult()?.error);
-  readonly cartCount = computed(() => this.cart().length);
-  readonly cartList = computed(() => this.cart());
+
   private getFruits(): Observable<Result<fruit[]>> {
     return this.http.get<fruit[]>(this.url.getFruits()).pipe(
       map(fruits => ({ data: fruits } as Result<fruit[]>)),
@@ -34,8 +36,11 @@ export class FruitService {
     const existingItem = this.cart().find(f => f.id === fruit.id);
 
     if (existingItem) {
-      existingItem.quantity++;
-      this.cart.set([...this.cart().filter(f => f.id !== fruit.id), existingItem]);
+      this.cart.update((oldCart) =>{
+        return oldCart.map((item) => item.id === fruit.id ? { ...item, quantity: item.quantity + 1 } : item
+        )
+      });
+
     } else {
       let item: cartItem = {
         id: fruit.id,
