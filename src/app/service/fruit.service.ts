@@ -33,22 +33,22 @@ export class FruitService {
   }
 
   addFruitToCart(fruit: fruit) {
-    const existingItem = this.cart().find(f => f.id === fruit.id);
 
-    if (existingItem) {
-      this.cart.update((oldCart) =>{
-        return oldCart.map((item) => item.id === fruit.id ? { ...item, quantity: item.quantity + 1 } : item
-        )
-      });
+    this.cart.update((oldCart) => {
+      const existingItem = oldCart.find(f => f.id === fruit.id);
+        if(!existingItem) {
+          return [...oldCart, {
+            id: fruit.id,
+            name: fruit.name,
+            price: fruit.price,
+            quantity: 1
+          }];
+        }
 
-    } else {
-      let item: cartItem = {
-        id: fruit.id,
-        name: fruit.name,
-        price: fruit.price,
-        quantity: 1
-      };
-      this.cart.set([...this.cart(), item]);
-    }
+        return oldCart.map(item =>
+          item.id === fruit.id ? { ...item, quantity: item.quantity + 1 } : item
+        );
+    });
   }
+
 }
