@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Signal, signal } from '@angular/core';
+import { FruitService } from '../../service/fruit.service';
+import { fruit } from '../../utils/fruit';
 
 @Component({
   selector: 'app-fruit-list',
@@ -8,9 +10,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FruitListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private fruitService: FruitService) { }
+
+  fruits: Signal<fruit[] | undefined> = signal([]);
 
   ngOnInit() {
+    this.fruits = this.fruitService.fruits;
   }
-
 }

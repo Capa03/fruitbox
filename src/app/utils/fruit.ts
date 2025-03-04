@@ -5,7 +5,8 @@ export interface fruit
   "id": number,
   "family": string,
   "order": string,
-  "nutritions": nutrition[]
+  "nutritions": nutrition[],
+  "image": string
 }
 
 interface nutrition
