@@ -45,7 +45,7 @@
       </table>
 
       <div class="total">
-        <h3>Total: ${{ getTotalPrice() | number:'1.2-2' }}</h3>
+        <h3>Total: {{ total() | currency }}</h3>
       </div>
     </mat-card-content>
 

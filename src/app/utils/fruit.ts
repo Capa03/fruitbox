@@ -1,5 +1,4 @@
-export interface fruit
-{
+export interface fruit {
   "genus": string,
   "name": string,
   "id": number,
@@ -10,8 +9,7 @@ export interface fruit
   "price": number,
 }
 
-interface nutrition
-{
+interface nutrition {
   "carbohydrates": number,
   "protein": number,
   "fat": number,
@@ -20,8 +18,7 @@ interface nutrition
 }
 
 
-export interface cartItem
-{
+export interface cartItem {
   id: number,
   name: string,
   price: number,

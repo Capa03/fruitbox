@@ -11,6 +11,7 @@ import { FruitService } from '../../service/fruit.service';
 
 export class ToolbarComponent implements OnInit {
   cartCount: Signal<number> = signal<number>(0);
+  searchBox: string = "";
 
   constructor(private route: Router, private fruitService: FruitService) {
     effect(() => console.log('Cart toolbar:', this.cartCount()));
@@ -18,6 +19,10 @@ export class ToolbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.cartCount = this.fruitService.cartCount;
+  }
+
+  onSearch(event: any) {
+    this.fruitService.filterFruit(event.target.value);
   }
 
   onCartClick() {

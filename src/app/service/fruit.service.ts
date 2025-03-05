@@ -1,7 +1,7 @@
 import { cartItem, fruit } from './../utils/fruit';
 import { HttpClient } from '@angular/common/http';
 import { computed, effect, Injectable, Signal, signal } from '@angular/core';
-import { catchError, filter, map, Observable, of, tap } from 'rxjs';
+import { catchError, filter, map, Observable, of, switchMap, tap } from 'rxjs';
 import { Result } from '../utils/response';
 import { ServerService } from './server.service';
 import { toObservable, toSignal } from '@angular/core/rxjs-interop';
@@ -13,11 +13,17 @@ import { toObservable, toSignal } from '@angular/core/rxjs-interop';
 export class FruitService {
   private fruitsResult: Signal<Result<fruit[]> | undefined> = signal(undefined);
   private cart = signal<cartItem[]>([]);
+  private searchBox = signal<string>("");
 
   readonly fruits = computed(() => this.fruitsResult()?.data);
   readonly fruitsError = computed(() => this.fruitsResult()?.error);
   readonly cartCount = computed(() => this.cart().length);
   readonly cartList = computed(() => this.cart());
+
+  readonly filtredFruits = computed(() =>
+    this.fruits()?.filter(f =>
+      f.name.toLowerCase().includes(this.searchBox().toLowerCase())) || []
+  );
 
   constructor(private http: HttpClient, private url: ServerService) {
     this.fruitsResult = toSignal(this.getFruits());
@@ -72,8 +78,11 @@ export class FruitService {
     this.cart.update((oldCart) => oldCart.filter(c => c.id !== item.id));
   }
 
-  clearCart()
-  {
+  clearCart() {
     this.cart.set([]);
+  }
+
+  filterFruit(name: string) {
+    this.searchBox.set(name);
   }
 }

@@ -1,10 +1,14 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <span class="title" routerLink="fruits">Fruit Box 🍉</span>
-    <span class="spacer"></span>
+    <span class="spacer">
+      <mat-form-field>
+        <mat-label>Favorite food</mat-label>
+        <input matInput placeholder="Ex. Pizza" (input)="onSearch($event)" [(ngModel)]="searchBox">
+      </mat-form-field>
+    </span>
     <button mat-icon-button (click)="onCartClick()">
-      <mat-icon matBadge="{{cartCount()}}" matBadgeColor="accent">shopping_cart</mat-icon>
+      <mat-icon aria-hidden="false" matBadge="{{cartCount()}}" matBadgeColor="accent">shopping_cart</mat-icon>
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
-
