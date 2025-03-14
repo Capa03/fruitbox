@@ -2,6 +2,7 @@
   @for (fruit of fruits(); track fruit.id) {
   <mat-grid-tile>
     <mat-card class="fruit-card">
+    <div  [routerLink]="['/details', fruit.id]">
       <mat-card-header>
         <mat-card-title>{{ fruit.name }}</mat-card-title>
       </mat-card-header>
@@ -10,6 +11,7 @@
         <h1>{{fruit.image}}</h1>
         <p><strong>Price:</strong> {{ fruit.price | currency}}</p>
       </mat-card-content>
+    </div>
       <button mat-raised-button (click)="addToCart(fruit)">Buy</button>
     </mat-card>
   </mat-grid-tile>

@@ -12,14 +12,15 @@ export class CartComponent implements OnInit {
 
   constructor(private fruitService: FruitService) { }
 
-  cartItems: Signal<cartItem[]> = signal<cartItem[]>([]);
+  cartItems: Signal<cartItem[] | undefined> = signal<cartItem[] | undefined>([]);
 
   readonly total = computed(() =>
-    this.cartItems().reduce((sum, c) => sum + c.price * c.quantity, 0)
+    this.cartItems()?.reduce((sum, c) => sum + c.price * c.quantity, 0)
   );
 
   ngOnInit() {
-    this.cartItems = this.fruitService.cartList;
+    this.fruitService.notHomePage();
+    this.cartItems = this.fruitService.getCartList();
   }
 
   displayedColumns: string[] = ['name', 'quantity', 'price', 'actions'];

@@ -16,10 +16,11 @@ export class FruitListComponent implements OnInit {
   fruits: Signal<fruit[] | undefined> = signal([]);
 
   ngOnInit() {
-    this.fruits = this.fruitService.filtredFruits;
+    this.fruits = this.fruitService.getFiltredFruits();
   }
 
   addToCart(fruit: fruit) {
     this.fruitService.addFruitToCart(fruit);
   }
+
 }

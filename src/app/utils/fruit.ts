@@ -24,3 +24,5 @@ export interface cartItem {
   price: number,
   quantity: number
 }
+
+
