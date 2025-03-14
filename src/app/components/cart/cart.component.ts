@@ -1,4 +1,4 @@
-import { Component, OnInit, signal, Signal } from '@angular/core';
+import { Component, computed, effect, OnInit, signal, Signal } from '@angular/core';
 import { cartItem } from '../../utils/fruit';
 import { FruitService } from '../../service/fruit.service';
 
@@ -12,33 +12,33 @@ export class CartComponent implements OnInit {
 
   constructor(private fruitService: FruitService) { }
 
-  cartItems: Signal<cartItem[]> = signal<cartItem[]>([]);
+  cartItems: Signal<cartItem[] | undefined> = signal<cartItem[] | undefined>([]);
+
+  readonly total = computed(() =>
+    this.cartItems()?.reduce((sum, c) => sum + c.price * c.quantity, 0)
+  );
 
   ngOnInit() {
-    this.cartItems = this.fruitService.cartList;
+    this.fruitService.notHomePage();
+    this.cartItems = this.fruitService.getCartList();
   }
-
 
   displayedColumns: string[] = ['name', 'quantity', 'price', 'actions'];
 
   increaseQuantity(item: cartItem) {
-    item.quantity++;
+    this.fruitService.increaseCart(item);
   }
 
   decreaseQuantity(item: cartItem) {
-
+    this.fruitService.decreaseCart(item);
   }
 
   removeItem(item: cartItem) {
-
+    this.fruitService.removeItemCart(item);
   }
 
   clearCart() {
-
-  }
-
-  getTotalPrice(): number {
-    return 0;
+    this.fruitService.clearCart();
   }
 
   checkout() {

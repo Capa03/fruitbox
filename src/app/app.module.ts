@@ -16,6 +16,9 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatButtonModule } from '@angular/material/button';
 import { CartComponent } from './components/cart/cart.component';
 import { MatTableModule } from '@angular/material/table';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import { DetailsComponent } from './components/details/details.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +26,8 @@ import { MatTableModule } from '@angular/material/table';
     ToolbarComponent,
     FooterComponent,
     FruitListComponent,
-    CartComponent
+    CartComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +38,9 @@ import { MatTableModule } from '@angular/material/table';
     MatIconModule,
     MatBadgeModule,
     MatButtonModule,
-    MatTableModule
+    MatTableModule,
+    MatInputModule,
+    FormsModule
   ],
   providers: [provideHttpClient()],
   bootstrap: [AppComponent]
